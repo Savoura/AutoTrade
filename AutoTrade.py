@@ -6,7 +6,7 @@ import ctypes
 
 pVersion = 'v0.1.0'
 pName = 'AutoTrade'
-pUrl = ''
+pUrl = 'https://raw.githubusercontent.com/Savoura/AutoTrade/main/AutoTrade.py'
 
 inGame = None
 count = 0
@@ -85,9 +85,9 @@ def sell_loot():
     confirmX = int(QtBind.text(gui, confirmXText))
     confirmY = int(QtBind.text(gui, confirmYText))
     
-    Timer(2.0, lambda: pyautogui.click(x=openX, y=openY)).start()
-    pyautogui.click(x=sellX, y=sellY)
-    pyautogui.click(x=confirmX, y=confirmY)
+    lambda: pyautogui.click(x=openX, y=openY, interval=0.5)
+    pyautogui.click(x=sellX, y=sellY, interval=0.5)
+    pyautogui.click(x=confirmX, y=confirmY, interval=0.5)
     Timer(7.0, buy_loot).start()
 
 def buy_loot():
@@ -98,10 +98,10 @@ def buy_loot():
     exitY = int(QtBind.text(gui, exitYText))
 
     pyautogui.keyDown('ctrl')
-    pyautogui.click(x=buyX, y=buyY)
+    pyautogui.click(x=buyX, y=buyY, interval=0.5)
     pyautogui.keyUp('ctrl')
 
-    Timer(5.0, lambda: pyautogui.click(x=exitX, y=exitY)).start()
+    Timer(5.0, lambda: pyautogui.click(x=exitX, y=exitY, interval=0.5)).start()
 
 def bring_SRO_to_foreground():
     if inGame or isJoined():
